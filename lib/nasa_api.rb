@@ -24,6 +24,8 @@ module NasaApi
     end
 
     def parse_date(date)
+      # Allow Ruby Date/Time objects to be used
+      # by changing them to the Nasa API's expected YYYY-MM-DD format
       case date
       when Time
         date.strftime("%Y-%m-%d")
@@ -31,9 +33,32 @@ module NasaApi
         date.to_s
       when String
         date
-      else
-        Date.today.to_s
       end
+    end
+
+    def params_dates(params = {})
+      # If date provided, parse it
+      # If start/end date provided, parse them
+      # If {:random = true} in params, use a random date 
+      # otherwise use no date, most Nasa API's will then default to Today's date
+      if params[:date]
+        params[:date] = parse_date(params[:date])
+        return params
+      end
+
+      if params[:start_date]
+        params[:start_date] = parse_date(params[:start_date])
+        if params[:end_date]
+          params[:end_date] = parse_date(params[:end_date])
+        end
+        return params
+      end 
+
+      if params[:random]
+        params[:date] = rand(Date.parse('1995-06-16')..Date.today)
+        params.delete(:random)
+      end
+      params
     end
   end
 end

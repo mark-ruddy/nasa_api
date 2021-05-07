@@ -2,14 +2,10 @@ module NasaApi
   class Planetary < NasaInit
     PLANETARY_URL = BASE_URL + 'planetary/'
     APOD_URL = PLANETARY_URL + 'apod'
+    EARTH_URL = PLANETARY_URL + 'earth'
 
     def apod(params = {}) 
-      # If no date is provided, choose a random one
-      if params[:date]
-        params[:date] = parse_date(params[:date])
-      else
-        params[:date] = rand(Date.parse('1995-06-16')..Date.today)
-      end
+      params = params_dates(params)
 
       # @options contains global information for all api calls, like api_key
       # merge it with the specific params for APOD calls to create full request

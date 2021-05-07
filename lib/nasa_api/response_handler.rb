@@ -5,6 +5,7 @@ module NasaApi
 
       def initialize(values = {})
         @url = values['url']
+        @hd_url = values['hdurl']
         @media_type = values['media_type']
         @title = values['title']
         @explanation = values['explanation']
