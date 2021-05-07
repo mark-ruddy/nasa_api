@@ -8,7 +8,6 @@ module NasaApi
         @media_type = values['media_type']
         @title = values['title']
         @explanation = values['explanation']
-        @hd_url = values['hdurl']
         @date = values['date']
         @copyright = values['copyright']
       end

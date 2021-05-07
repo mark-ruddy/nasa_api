@@ -9,3 +9,8 @@
 
 # rspec failure tracking
 .rspec_status
+
+# extra testing and building files
+*.gem
+test.rb
+

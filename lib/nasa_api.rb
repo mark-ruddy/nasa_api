@@ -1,9 +1,6 @@
 require 'date'
 require 'httparty'
 
-require_relative "nasa_api/version"
-require_relative "nasa_api/planetary"
-
 module NasaApi
   BASE_URL = 'https://api.nasa.gov/'
 
@@ -20,19 +17,9 @@ module NasaApi
   class NasaInit
     attr_accessor :api_key, :high_definition, :date, :options
    
-    # override date= with parsed version
-    def date=(date)
-      @date = parse_date(date)
-    end
-
     def initialize(options = {})
       @api_key = options[:api_key] || 'DEMO_KEY'
-      @high_definition = options[:high_definition]
-
-      # Assign and parse date, add parsed version to options
-      @date = options[:date]
-      options[:date] = @date
-
+      options[:api_key] = @api_key
       @options = options
     end
 
@@ -50,3 +37,8 @@ module NasaApi
     end
   end
 end
+
+require_relative "nasa_api/version"
+require_relative "nasa_api/response_handler"
+require_relative "nasa_api/planetary"
+
