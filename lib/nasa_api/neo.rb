@@ -6,11 +6,10 @@ module NasaApi
     BROWSE_URL = NEO_URL + 'neo/browse'
 
     def lookup(params = {})
-      # requires customized URL as it only takes one parameter with ?asteroid_id=
+      # requires customized URL as it only takes one parameter which doesn't respond to ?asteroid_id=
+
       asteroid_id = params[:asteroid_id].to_s 
       response = HTTParty.get(LOOKUP_URL + asteroid_id + '?api_key=' + @options[:api_key])
-
-      print response.request.last_uri.to_s
       if response.code == 200
         ResponseHandler::NeoLookup.new(response)
       else

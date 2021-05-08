@@ -7,6 +7,8 @@ module NasaApi
     EARTH_IMAGERY_URL = EARTH_URL + 'imagery'
     EARTH_ASSETS_URL = EARTH_URL + 'assets'
 
+    EPIC_URL = BASE_URL + 'EPIC/api/natural'
+
     def apod(params = {}) 
       params = params_dates(params)
 
@@ -45,5 +47,18 @@ module NasaApi
         Error.new(response)
       end
     end
+
+    def epic(params = {})
+      params = params_dates(params)
+      params.merge!(@options)
+
+      response = HTTParty.get(EPIC_URL, query: params)
+      if response.code == 200
+        ResponseHandler::Epic.new(response)
+      else
+        Error.new(response)
+      end
+    end
   end
 end
+

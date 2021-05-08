@@ -89,6 +89,17 @@ module NasaApi
         expect(invalid_default).to be_a(Error)
       end
     end
+
+    describe "epic method" do
+      before(:all) do
+        @valid_default = { date: '2021-01-01' }
+      end
+
+      it "returns a ResponseHandler::Epic object when valid" do
+        valid_default = client.epic(@valid_default)
+        expect(valid_default).to be_a(ResponseHandler::Epic)
+      end
+    end
   end
 end
 
