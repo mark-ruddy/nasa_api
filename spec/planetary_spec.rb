@@ -1,4 +1,4 @@
-require 'spec_helper.rb'
+require_relative 'spec_helper'
 
 module NasaApi
   RSpec.describe Planetary do
