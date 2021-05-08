@@ -55,6 +55,40 @@ module NasaApi
         expect(invalid_broken_date).to be_a(Error)
       end
     end
+
+    describe "earth_imagery method" do
+      before(:all) do
+        @valid_default = { lon: 100.75, lat: 1.5, date: Date.new(2014, 2, 1) }
+        @invalid_default = { lon: 10000009, date: Date.new(1804, 2, 2) } 
+      end
+
+      it "returns a ResponseHandler::EarthImagery object when valid" do
+        valid_default = client.earth_imagery(@valid_default)
+        expect(valid_default).to be_a(ResponseHandler::EarthImagery)
+      end
+
+      it "returns an Error object when invalid" do
+        invalid_default = client.earth_imagery(@invalid_default)
+        expect(invalid_default).to be_a(Error)
+      end 
+    end
+
+    describe "earth_assets method" do
+      before(:all) do
+        @valid_default = { lon: -95.33, lat: 29.78, dim: 0.025, date: '2018-01-01' }
+        @invalid_default = {  lon: 22222, lat: 99999, date: Date.new(1700, 1, 1) }
+      end
+
+      it "returns a ResponseHandler::EarthAssets object when valid" do
+        valid_default = client.earth_assets(@valid_default)
+        expect(valid_default).to be_a(ResponseHandler::EarthAssets)
+      end
+
+      it "returns an Error object when invalid" do
+        invalid_default = client.earth_assets(@invalid_default)
+        expect(invalid_default).to be_a(Error)
+      end
+    end
   end
 end
 
