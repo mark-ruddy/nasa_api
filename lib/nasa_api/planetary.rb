@@ -12,7 +12,7 @@ module NasaApi
       params.merge!(@options)
 
       response = HTTParty.get(APOD_URL, query: params)
-      if response['error'].nil?
+      if response.code == 200
         NasaApi::ResponseHandler::Apod.new(response) 
       else
         NasaApi::Error.new(response) 

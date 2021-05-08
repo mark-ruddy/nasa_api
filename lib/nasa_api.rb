@@ -19,6 +19,13 @@ module NasaApi
    
     def initialize(options = {})
       @api_key = options[:api_key] || 'DEMO_KEY'
+
+      # When testing with RSpec, uncomment the below line with your actual API key as default
+      # Specs will use the default API key, e.g. the string to the right of ||
+      # by default this is 'DEMO_KEY', and will cause specs to fail as DEMO_KEY is rate-limited quickly
+      #
+      # @api_key = options[:api_key] || 'ACTUAL_API_KEY'
+
       options[:api_key] = @api_key
       @options = options
     end
@@ -55,7 +62,7 @@ module NasaApi
       end 
 
       if params[:random]
-        params[:date] = rand(Date.parse('1995-06-16')..Date.today)
+        params[:date] = rand(Date.parse('2000-01-01')..Date.today)
         params.delete(:random)
       end
       params
