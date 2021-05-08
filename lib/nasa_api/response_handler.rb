@@ -49,6 +49,44 @@ module NasaApi
         @service_version = response['service_version']
       end
     end
+    
+    class NeoLookup
+      attr_accessor :links, :id, :neo_reference_id, :name, :designation, :nasa_jpl_url, :absolute_magnitude_h, :estimated_diameter, :is_potentially_hazardous_asteroid, :close_approach_data, :orbital_data, :is_sentry_object
 
+      def initialize(response = {})
+        @links = response['links']
+        @id = response['id']
+        @neo_reference_id = response['neo_reference_id']
+        @name = response['name']
+        @designation = response['designation']
+        @nasa_jpl_url = response['nasa_jpl_url']
+        @absolute_magnitude_h = response['absolute_magnitude_h']
+        @estimated_diameter = response['estimated_diameter']
+        @is_potentially_hazardous_asteroid = response['is_potentially_hazardous_asteroid']
+        @close_approach_data = response['close_approach_data']
+        @orbital_data = response['orbital_data']
+        @is_sentry_object = response['is_sentry_object']
+      end
+    end
+
+    class NeoFeed
+      attr_accessor :links, :element_count, :near_earth_objects
+
+      def initialize(response = {})
+        @links = response['links']
+        @element_count = response['element_count']
+        @near_earth_objects = response['near_earth_objects']
+      end
+    end
+
+    class NeoBrowse
+      attr_accessor :links, :page, :near_earth_objects
+
+      def initialize(response = {})
+        @links = response['links']
+        @page = response['page']
+        @near_earth_objects = response['near_earth_objects']
+      end
+    end
   end
 end
