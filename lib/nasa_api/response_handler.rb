@@ -114,5 +114,28 @@ module NasaApi
         end
       end
     end
+
+    class TechTransfer
+      attr_accessor :results, :count, :total, :perpage, :page
+
+      def initialize(response = {})
+        @results = response['results']
+        @count = response['count']
+        @total = response['total']
+        @perpage = response['perpage']
+        @page = response['page']
+      end
+    end
+
+    class TechPort
+      attr_accessor :totalCount, :project, :projects
+
+      def initialize(response = {})
+        @totalCount = response['totalCount'] if response['totalCount']
+        @project = response['project'] if response['project']
+        @projects = response['projects'] if response['projects']
+      end
+    end
   end
 end
+
