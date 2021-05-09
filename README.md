@@ -42,8 +42,11 @@ Once you have your key, pass it in when creating clients: `mars_client = NasaApi
 All parameters for every API call are supported and matches the parameters from [NASA Open APIs](https://api.nasa.gov/)  
 Don't pass api_key directly to a method call, only pass it when creating a client  
 
-Ruby Date and Time objects can be passed and will be converted to the 'YYYY-MM-DD' format that the API expects.
-These 2 calls are identical: `planetary_client.apod(date: '2021-01-01')` and `planetary_client.apod(date: Date.new(2021, 1, 1))`
+Ruby Date and Time objects can be passed and will be converted to the 'YYYY-MM-DD' format that the API expects  
+
+These 2 calls are identical:   
+`planetary_client.apod(date: '2021-01-01')`  
+`planetary_client.apod(date: Date.new(2021, 1, 1))`
 
 ### Planetary
 
@@ -164,7 +167,7 @@ projects_data.projects # for an array of projects
 
 ### Neo (Near Earth Object)
 
-Create a client: `neo_client = NasaApi::Neo.new(api_key: 'YOUR_KEY')
+Create a client: `neo_client = NasaApi::Neo.new(api_key: 'YOUR_KEY')`
 
 #### NeoLookup
 
