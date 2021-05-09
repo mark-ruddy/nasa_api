@@ -136,6 +136,23 @@ module NasaApi
         @projects = response['projects'] if response['projects']
       end
     end
+
+    class MarsInsight
+      attr_accessor :sol_keys, :validity_checks
+
+      def initialize(response = {})
+        @sol_keys = response['sol_keys']
+        @validity_checks = response['validity_checks']
+      end
+    end
+
+    class MarsPhotos
+      attr_accessor :photos
+
+      def initialize(response = {})
+        @photos = response['photos']
+      end
+    end
   end
 end
 

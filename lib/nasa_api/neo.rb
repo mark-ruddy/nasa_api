@@ -10,7 +10,9 @@ module NasaApi
 
       params[:asteroid_id] ||= 0
       asteroid_id = params[:asteroid_id].to_s 
-      response = HTTParty.get(LOOKUP_URL + asteroid_id + '?api_key=' + @options[:api_key])
+      params.delete(:asteroid_id)
+      params.merge!(@options)
+      response = HTTParty.get(LOOKUP_URL + asteroid_id, query: params)
       if response.code == 200
         ResponseHandler::NeoLookup.new(response)
       else

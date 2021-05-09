@@ -76,4 +76,5 @@ require_relative "nasa_api/response_handler"
 require_relative "nasa_api/planetary"
 require_relative "nasa_api/neo"
 require_relative "nasa_api/tech"
+require_relative "nasa_api/mars"
 

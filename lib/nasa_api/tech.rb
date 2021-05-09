@@ -14,8 +14,9 @@ module NasaApi
       params[:item] ||= ''
       item = params[:item].to_s
       params.delete(:item)
+      params.merge!(@options)
 
-      response = HTTParty.get(TRANSFER_URL + type + '/?' + item + '&api_key=' + @options[:api_key])
+      response = HTTParty.get(TRANSFER_URL + type + '/?' + item, query: params)
       if response.code == 200
         ResponseHandler::TechTransfer.new(response)
       else
@@ -28,8 +29,9 @@ module NasaApi
       params[:id] ||= ''
       id = params[:id].to_s
       params.delete(:id)
+      params.merge!(@options)
 
-      response = HTTParty.get(PORT_URL + id + '?api_key=' + @options[:api_key])
+      response = HTTParty.get(PORT_URL + id, query: params)
       if response.code == 200
         ResponseHandler::TechPort.new(response)
       else
