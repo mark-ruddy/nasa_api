@@ -36,7 +36,7 @@ module NasaApi
 
       def initialize(response_head)
         @response = response_head
-        @url = response_head.uri.to_s
+        @url = response_head.request.last_uri.to_s
       end
     end
 
@@ -117,7 +117,7 @@ module NasaApi
           # Requires a little extra logic to retrieve image_url
           date_parsed = @date[-1].split(' ')[0]
           parts = date_parsed.split('-')
-          (@image_url ||= []) << "https://epic.gsfc.nasa.gov/archive/natural/#{parts[0]}/#{parts[1]}/#{parts[2]}/png/#{@image}"
+          (@image_url ||= []) << "https://epic.gsfc.nasa.gov/archive/natural/#{parts[0]}/#{parts[1]}/#{parts[2]}/png/#{@image[-1].to_s}.png"
         end
       end
     end
