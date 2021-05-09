@@ -1,9 +1,10 @@
 module NasaApi
   module ResponseHandler
     class Apod
-      attr_accessor :url, :media_type, :title, :explanation, :hd_url, :date, :copyright
+      attr_accessor :response, :url, :media_type, :title, :explanation, :hd_url, :date, :copyright
 
       def initialize(response = {})
+        @response = response
         if response.parsed_response.is_a?(::Hash)
           @url = response['url']
           @hd_url = response['hdurl']
@@ -31,17 +32,19 @@ module NasaApi
     end
 
     class EarthImagery
-      attr_accessor :url
+      attr_accessor :response, :url
 
       def initialize(response_head)
+        @response = response_head
         @url = response_head.uri.to_s
       end
     end
 
     class EarthAssets
-      attr_accessor :url, :date, :id, :resource
+      attr_accessor :response, :url, :date, :id, :resource
 
       def initialize(response = {})
+        @response = response
         @url = response['head']
         @date = response['date']
         @id = response['id']
@@ -51,9 +54,10 @@ module NasaApi
     end
     
     class NeoLookup
-      attr_accessor :links, :id, :neo_reference_id, :name, :designation, :nasa_jpl_url, :absolute_magnitude_h, :estimated_diameter, :is_potentially_hazardous_asteroid, :close_approach_data, :orbital_data, :is_sentry_object
+      attr_accessor :response, :links, :id, :neo_reference_id, :name, :designation, :nasa_jpl_url, :absolute_magnitude_h, :estimated_diameter, :is_potentially_hazardous_asteroid, :close_approach_data, :orbital_data, :is_sentry_object
 
       def initialize(response = {})
+        @response = response
         @links = response['links']
         @id = response['id']
         @neo_reference_id = response['neo_reference_id']
@@ -70,9 +74,10 @@ module NasaApi
     end
 
     class NeoFeed
-      attr_accessor :links, :element_count, :near_earth_objects
+      attr_accessor :response, :links, :element_count, :near_earth_objects
 
       def initialize(response = {})
+        @response = response
         @links = response['links']
         @element_count = response['element_count']
         @near_earth_objects = response['near_earth_objects']
@@ -80,9 +85,10 @@ module NasaApi
     end
 
     class NeoBrowse
-      attr_accessor :links, :page, :near_earth_objects
+      attr_accessor :response, :links, :page, :near_earth_objects
 
       def initialize(response = {})
+        @response = response
         @links = response['links']
         @page = response['page']
         @near_earth_objects = response['near_earth_objects']
@@ -90,9 +96,10 @@ module NasaApi
     end
 
     class Epic
-      attr_accessor :identifier, :caption, :image, :image_url, :version, :centroid_coordinates, :dscovr_j2000_position, :lunar_j2000_position, :sun_j2000_position, :attitude_quaternions, :date, :coords
+      attr_accessor :response, :identifier, :caption, :image, :image_url, :version, :centroid_coordinates, :dscovr_j2000_position, :lunar_j2000_position, :sun_j2000_position, :attitude_quaternions, :date, :coords
 
       def initialize(response = {})
+        @response = response
         response.each do |values|
           (@identifier ||= []) << values['identifier']
           (@caption ||= []) << values['caption']
@@ -116,9 +123,10 @@ module NasaApi
     end
 
     class TechTransfer
-      attr_accessor :results, :count, :total, :perpage, :page
+      attr_accessor :response, :results, :count, :total, :perpage, :page
 
       def initialize(response = {})
+        @response = response
         @results = response['results']
         @count = response['count']
         @total = response['total']
@@ -128,9 +136,10 @@ module NasaApi
     end
 
     class TechPort
-      attr_accessor :totalCount, :project, :projects
+      attr_accessor :response, :totalCount, :project, :projects
 
       def initialize(response = {})
+        @response = response
         @totalCount = response['totalCount'] if response['totalCount']
         @project = response['project'] if response['project']
         @projects = response['projects'] if response['projects']
@@ -138,18 +147,20 @@ module NasaApi
     end
 
     class MarsInsight
-      attr_accessor :sol_keys, :validity_checks
+      attr_accessor :response, :sol_keys, :validity_checks
 
       def initialize(response = {})
+        @response = response
         @sol_keys = response['sol_keys']
         @validity_checks = response['validity_checks']
       end
     end
 
     class MarsPhotos
-      attr_accessor :photos
+      attr_accessor :response, :photos
 
       def initialize(response = {})
+        @response = response
         @photos = response['photos']
       end
     end
