@@ -8,11 +8,11 @@ Gem::Specification.new do |spec|
   spec.authors       = ["mark-ruddy"]
   spec.email         = ["1markruddy@gmail.com"]
 
-  spec.summary       = "Ruby wrapper of the Nasa APIs" 
+  spec.summary       = "An easy to use Ruby wrapper for the Nasa Open APIs" 
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 
-  # spec.metadata["allowed_push_host"] = "TODO: Set to 'http://mygemserver.com'"
+  spec.description = "Please visit the github repository at https://github.com/mark-ruddy/nasa_api for usage instructions"
   spec.metadata["source_code_uri"] = "https://github.com/mark-ruddy/nasa_api"
 
   # Specify which files should be added to the gem when it is released.
