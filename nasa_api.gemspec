@@ -14,6 +14,7 @@ Gem::Specification.new do |spec|
 
   spec.description = "Please visit the github repository at https://github.com/mark-ruddy/nasa_api for usage instructions"
   spec.metadata["source_code_uri"] = "https://github.com/mark-ruddy/nasa_api"
+  spec.homepage = "https://rubygems.org/gems/nasa_api"
 
   # Specify which files should be added to the gem when it is released.
   # The `git ls-files -z` loads the files in the RubyGem that have been added into git.
