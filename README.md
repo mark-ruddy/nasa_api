@@ -145,7 +145,6 @@ engine_data = tech_client.transfer(type: 'patent', item: 'engine')
 engine_data.results
 engine_data.count
 ```
-Note:   
 
 #### TechPort
 
