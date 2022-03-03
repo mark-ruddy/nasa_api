@@ -1,5 +1,5 @@
 # NasaApi
-
+https://rubygems.org/gems/nasa_api
 An easy to use Ruby wrapper around the [NASA Open APIs](https://api.nasa.gov/)
 
 Currently supports: APOD, EPIC, Earth, Neo, Insight, Mars Rover Photos, TechTransfer and TechPort
